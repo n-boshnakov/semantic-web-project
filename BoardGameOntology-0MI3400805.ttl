@@ -1,0 +1,690 @@
+@prefix : <http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/> .
+
+<http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/hasAddress
+:hasAddress rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdf:type owl:FunctionalProperty ;
+            rdfs:domain :Publisher ;
+            rdfs:range :Address .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/hasCategory
+:hasCategory rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :BoardGame ;
+             rdfs:range :GameCategory .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/hasDesigned
+:hasDesigned rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             owl:inverseOf :isDesignedBy ;
+             rdfs:domain :Designer .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/hasMechanic
+:hasMechanic rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :BoardGame ;
+             rdfs:range :GameMechanics .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/hasPublished
+:hasPublished rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              owl:inverseOf :isPublishedBy ;
+              rdfs:domain :Publisher .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/hasType
+:hasType rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         rdfs:domain :BoardGame ;
+         rdfs:range :GameType .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/isDesignedBy
+:isDesignedBy rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :BoardGame ;
+              rdfs:range :Designer .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/isExpansionOf
+:isExpansionOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdf:type owl:FunctionalProperty ;
+               rdfs:domain :Expansion ;
+               rdfs:range :BoardGame .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/isPartOfSeries
+:isPartOfSeries rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdf:type owl:SymmetricProperty ,
+                         owl:TransitiveProperty ;
+                rdfs:domain :BoardGame ;
+                rdfs:range :BoardGame .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/isPublishedBy
+:isPublishedBy rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain :BoardGame ;
+               rdfs:range :Publisher .
+
+
+###  http://www.w3.org/2002/07/owl#topObjectProperty
+owl:topObjectProperty rdf:type owl:ObjectProperty ,
+                               owl:SymmetricProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/birthYear
+:birthYear rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdf:type owl:FunctionalProperty ;
+           rdfs:domain :Person ;
+           rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/city
+:city rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf owl:topDataProperty ;
+      rdf:type owl:FunctionalProperty ;
+      rdfs:domain :Address ;
+      rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/complexity
+:complexity rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdf:type owl:FunctionalProperty ;
+            rdfs:domain :BoardGame ;
+            rdfs:range xsd:decimal .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/country
+:country rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdf:type owl:FunctionalProperty ;
+         rdfs:domain :Address ;
+         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/foundedOn
+:foundedOn rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdf:type owl:FunctionalProperty ;
+           rdfs:domain :Publisher ;
+           rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/maxCount
+:maxCount rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :playerCount ;
+          rdf:type owl:FunctionalProperty ;
+          rdfs:domain :BoardGame ;
+          rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/maxPlayingTime
+:maxPlayingTime rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :playingTime ;
+                rdf:type owl:FunctionalProperty ;
+                rdfs:domain :BoardGame ;
+                rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/minCount
+:minCount rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :playerCount ;
+          rdf:type owl:FunctionalProperty ;
+          rdfs:domain :BoardGame ;
+          rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/minPlayingTime
+:minPlayingTime rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :playingTime ;
+                rdf:type owl:FunctionalProperty ;
+                rdfs:domain :BoardGame ;
+                rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/playerCount
+:playerCount rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :BoardGame ;
+             rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/playingTime
+:playingTime rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :BoardGame ;
+             rdfs:range xsd:integer ;
+             rdfs:comment "Measured in minutes" .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/rating
+:rating rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdf:type owl:FunctionalProperty ;
+        rdfs:domain :BoardGame ;
+        rdfs:range xsd:decimal .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/releaseYear
+:releaseYear rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdf:type owl:FunctionalProperty ;
+             rdfs:domain :BoardGame ;
+             rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/street
+:street rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdf:type owl:FunctionalProperty ;
+        rdfs:domain :Address ;
+        rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/suggestedAge
+:suggestedAge rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdf:type owl:FunctionalProperty ;
+              rdfs:domain :BoardGame ;
+              rdfs:range xsd:integer .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Address
+:Address rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/BoardGame
+:BoardGame rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/CompetitiveGame
+:CompetitiveGame rdf:type owl:Class ;
+                 rdfs:subClassOf :BoardGame ;
+                 owl:disjointWith :CooperativeGame .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/CooperativeGame
+:CooperativeGame rdf:type owl:Class ;
+                 rdfs:subClassOf :BoardGame .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Designer
+:Designer rdf:type owl:Class ;
+          rdfs:subClassOf :Person .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Expansion
+:Expansion rdf:type owl:Class ;
+           rdfs:subClassOf :BoardGame .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/GameCategory
+:GameCategory rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/GameMechanics
+:GameMechanics rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/GameType
+:GameType rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Person
+:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Publisher
+:Publisher rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/SemiCooperativeGame
+:SemiCooperativeGame rdf:type owl:Class ;
+                     owl:equivalentClass [ owl:intersectionOf ( :CooperativeGame
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :hasMechanic ;
+                                                                  owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                       owl:oneOf ( :HiddenTraitor
+                                                                                                   :PlayerElimination
+                                                                                                 )
+                                                                                     ]
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] ;
+                     rdfs:subClassOf :BoardGame .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/SoloFriendlyGame
+:SoloFriendlyGame rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( :BoardGame
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :minCount ;
+                                                               owl:hasValue 1
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  rdfs:subClassOf :BoardGame .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/ActionPoints
+:ActionPoints rdf:type owl:NamedIndividual ,
+                       :GameMechanics .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/AddressAsmodee
+:AddressAsmodee rdf:type owl:NamedIndividual ,
+                         :Address ;
+                :city "Paris" ;
+                :country "France" ;
+                :street "8th Arr." .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/AddressAwaken_Realms
+:AddressAwaken_Realms rdf:type owl:NamedIndividual ,
+                               :Address ;
+                      :city "Gliwicze" ;
+                      :country "Poland" ;
+                      :street "Ukorovna 33" .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/AddressBreaking_Games
+:AddressBreaking_Games rdf:type owl:NamedIndividual ,
+                                :Address ;
+                       :city "Manchester" ;
+                       :country "UK" ;
+                       :street "Trouble Str. 73" .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/AddressKOSMOS
+:AddressKOSMOS rdf:type owl:NamedIndividual ,
+                        :Address ;
+               :city "Stuttgart" ;
+               :country "Germany" ;
+               :street "LeopoldStrasse 19" .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/AddressZ-Man_Games
+:AddressZ-Man_Games rdf:type owl:NamedIndividual ,
+                             :Address ;
+                    :city "Michigan" ;
+                    :country "USA" ;
+                    :street "Way Str. 12" .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/AreaMovement
+:AreaMovement rdf:type owl:NamedIndividual ,
+                       :GameMechanics .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Awaken_Realms
+:Awaken_Realms rdf:type owl:NamedIndividual ,
+                        :Publisher ;
+               :hasAddress :AddressAwaken_Realms ;
+               :foundedOn 2009 ;
+               rdfs:label "Awaken Realms"@en .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Breaking_Games
+:Breaking_Games rdf:type owl:NamedIndividual ,
+                         :Publisher ;
+                :hasAddress :AddressBreaking_Games ;
+                :foundedOn 2011 ;
+                rdfs:label "Breaking Games"@en .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/CATAN
+:CATAN rdf:type owl:NamedIndividual ,
+                :CompetitiveGame ;
+       :hasCategory :Dice ,
+                    :Economic ;
+       :hasMechanic :DiceRolling ,
+                    :Income ;
+       :hasType :Family ;
+       :isDesignedBy :Klaus_Teuber ;
+       :isPublishedBy :KOSMOS ,
+                      :asmodee ;
+       :complexity 2.28 ;
+       :maxCount 4 ;
+       :maxPlayingTime 120 ;
+       :minCount 3 ;
+       :minPlayingTime 60 ;
+       :rating 7.1 ;
+       :releaseYear 1995 ;
+       :suggestedAge 10 ;
+       rdfs:label "CATAN"@en .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/CardGame
+:CardGame rdf:type owl:NamedIndividual ,
+                   :GameCategory .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Dice
+:Dice rdf:type owl:NamedIndividual ,
+               :GameCategory .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/DiceRolling
+:DiceRolling rdf:type owl:NamedIndividual ,
+                      :GameMechanics .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Economic
+:Economic rdf:type owl:NamedIndividual ,
+                   :GameCategory .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Family
+:Family rdf:type owl:NamedIndividual ,
+                 :GameType .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Fantasy
+:Fantasy rdf:type owl:NamedIndividual ,
+                  :GameCategory .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Fighting
+:Fighting rdf:type owl:NamedIndividual ,
+                   :GameCategory .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/HandManagement
+:HandManagement rdf:type owl:NamedIndividual ,
+                         :GameMechanics .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/HiddenTraitor
+:HiddenTraitor rdf:type owl:NamedIndividual ,
+                        :GameMechanics .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Income
+:Income rdf:type owl:NamedIndividual ,
+                 :GameMechanics .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/KOSMOS
+:KOSMOS rdf:type owl:NamedIndividual ,
+                 :Publisher ;
+        :hasAddress :AddressKOSMOS ;
+        :foundedOn 1822 ;
+        rdfs:label "KOSMOS"@en .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Klaus_Teuber
+:Klaus_Teuber rdf:type owl:NamedIndividual ,
+                       :Designer ;
+              :birthYear 1952 ;
+              rdfs:label "Klaus Teuber"@en .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Matt_Leacock
+:Matt_Leacock rdf:type owl:NamedIndividual ,
+                       :Designer ;
+              :birthYear 1985 ;
+              rdfs:label "Matt Leacock"@en .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Nemesis
+:Nemesis rdf:type owl:NamedIndividual ,
+                  :CooperativeGame ;
+         :hasCategory :Dice ,
+                      :Fighting ;
+         :hasMechanic :AreaMovement ,
+                      :DiceRolling ,
+                      :HandManagement ,
+                      :HiddenTraitor ,
+                      :PlayerElimination ;
+         :hasType :Thematic ;
+         :isDesignedBy :Paweł_Samborski ;
+         :isPublishedBy :Awaken_Realms ;
+         :complexity 3.49 ;
+         :maxCount 5 ;
+         :maxPlayingTime 180 ;
+         :minCount 1 ;
+         :minPlayingTime 90 ;
+         :rating 8.3 ;
+         :releaseYear 2019 ;
+         :suggestedAge 12 ;
+         rdfs:label "Nemesis"@en .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Pandemic
+:Pandemic rdf:type owl:NamedIndividual ,
+                   :CooperativeGame ;
+          :hasMechanic :AreaMovement ,
+                       :HandManagement ,
+                       :VariablePlayerPowers ;
+          :hasType :Strategic ,
+                   :Thematic ;
+          :isDesignedBy :Matt_Leacock ;
+          :isPublishedBy :Z-Man_Games ;
+          :complexity 2.4 ;
+          :maxCount 4 ;
+          :maxPlayingTime 45 ;
+          :minCount 2 ;
+          :minPlayingTime 45 ;
+          :rating 7.5 ;
+          :releaseYear 2008 ;
+          :suggestedAge 8 ;
+          rdfs:label "Pandemic"@en .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Party
+:Party rdf:type owl:NamedIndividual ,
+                :GameType .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Paweł_Samborski
+:Paweł_Samborski rdf:type owl:NamedIndividual ,
+                          :Designer ;
+                 :birthYear 1983 ;
+                 rdfs:label "Paweł Samborski"@en .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/PlayerElimination
+:PlayerElimination rdf:type owl:NamedIndividual ,
+                            :GameMechanics .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Ramy_Badie
+:Ramy_Badie rdf:type owl:NamedIndividual ,
+                     :Designer ;
+            :birthYear 1991 ;
+            rdfs:label "Ramy Badie"@en .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/S.T.A.L.K.E.R._The_Board_Game
+:S.T.A.L.K.E.R._The_Board_Game rdf:type owl:NamedIndividual ,
+                                        :CooperativeGame ;
+                               :hasCategory :Dice ,
+                                            :Fighting ;
+                               :hasMechanic :AreaMovement ,
+                                            :DiceRolling ,
+                                            :VariablePlayerPowers ;
+                               :hasType :Strategic ,
+                                        :Thematic ;
+                               :isDesignedBy :Paweł_Samborski ;
+                               :isPublishedBy :Awaken_Realms ;
+                               :complexity 3.84 ;
+                               :maxCount 4 ;
+                               :maxPlayingTime 180 ;
+                               :minCount 1 ;
+                               :minPlayingTime 120 ;
+                               :rating 8.7 ;
+                               :releaseYear 2024 ;
+                               :suggestedAge 14 ;
+                               rdfs:label "S.T.A.L.K.E.R. The Board Game"@en .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Strategic
+:Strategic rdf:type owl:NamedIndividual ,
+                    :GameType .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/TakeThat
+:TakeThat rdf:type owl:NamedIndividual ,
+                   :GameMechanics .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Thematic
+:Thematic rdf:type owl:NamedIndividual ,
+                   :GameType .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Unstable_Unicorns
+:Unstable_Unicorns rdf:type owl:NamedIndividual ,
+                            :CompetitiveGame ;
+                   :hasCategory :CardGame ,
+                                :Fighting ;
+                   :hasMechanic :HandManagement ,
+                                :PlayerElimination ,
+                                :TakeThat ;
+                   :hasType :Party ;
+                   :isDesignedBy :Ramy_Badie ;
+                   :isPublishedBy :Breaking_Games ;
+                   :complexity 1.49 ;
+                   :maxCount 8 ;
+                   :maxPlayingTime 60 ;
+                   :minCount 2 ;
+                   :minPlayingTime 30 ;
+                   :rating 6.2 ;
+                   :releaseYear 2017 ;
+                   :suggestedAge 8 ;
+                   rdfs:label "Unstable Unicorns"@en .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/VariablePlayerPowers
+:VariablePlayerPowers rdf:type owl:NamedIndividual ,
+                               :GameMechanics .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Z-Man_Games
+:Z-Man_Games rdf:type owl:NamedIndividual ,
+                      :Publisher ;
+             :hasAddress :AddressZ-Man_Games ;
+             :foundedOn 2008 ;
+             rdfs:label "Z-Man Games"@en .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/asmodee
+:asmodee rdf:type owl:NamedIndividual ,
+                  :Publisher ;
+         :hasAddress :AddressAsmodee ;
+         :foundedOn 2001 ;
+         rdfs:label "asmodee"@en .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Nemesis:_Aftermath
+:Nemesis:_Aftermath rdf:type owl:NamedIndividual ,
+                             :Expansion ;
+                    :isDesignedBy :Paweł_Samborski ;
+                    :isExpansionOf :Nemesis ;
+                    :isPublishedBy :Awaken_Realms ;
+                    :complexity 3.32 ;
+                    :maxCount 5 ;
+                    :maxPlayingTime 60 ;
+                    :minCount 1 ;
+                    :minPlayingTime 45 ;
+                    :rating 8.5 ;
+                    :releaseYear 2021 ;
+                    :suggestedAge 12 ;
+                    rdfs:label "Nemesis: Aftermath"@en .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Nemesis:_Carnomorphs
+:Nemesis:_Carnomorphs rdf:type owl:NamedIndividual ,
+                               :Expansion ;
+                      :isDesignedBy :Paweł_Samborski ;
+                      :isExpansionOf :Nemesis ;
+                      :isPublishedBy :Awaken_Realms ;
+                      :complexity 3.48 ;
+                      :maxCount 5 ;
+                      :maxPlayingTime 120 ;
+                      :minCount 1 ;
+                      :minPlayingTime 60 ;
+                      :rating 8.4 ;
+                      :releaseYear 2019 ;
+                      :suggestedAge 12 ;
+                      rdfs:label "Nemesis: Carnomorphs"@en .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Nemesis:_Lockdown
+:Nemesis:_Lockdown rdf:type owl:NamedIndividual ,
+                            :CooperativeGame ;
+                   :hasCategory :Dice ,
+                                :Fighting ;
+                   :hasMechanic :AreaMovement ,
+                                :DiceRolling ,
+                                :HiddenTraitor ,
+                                :PlayerElimination ,
+                                :VariablePlayerPowers ;
+                   :hasType :Thematic ;
+                   :isDesignedBy :Paweł_Samborski ;
+                   :isPartOfSeries :Nemesis ;
+                   :isPublishedBy :Awaken_Realms ;
+                   :complexity 3.91 ;
+                   :maxCount 5 ;
+                   :maxPlayingTime 180 ;
+                   :minCount 1 ;
+                   :minPlayingTime 90 ;
+                   :rating 8.3 ;
+                   :releaseYear 2022 ;
+                   :suggestedAge 12 ;
+                   rdfs:label "Nemesis: Lockdown"@en .
+
+
+###  http://www.semanticweb.org/nikolay/ontologies/2025/11/board-game-ontology/Unstable_Unicorns:_Nightmares_Expansion_Pack
+:Unstable_Unicorns:_Nightmares_Expansion_Pack rdf:type owl:NamedIndividual ,
+                                                       :Expansion ;
+                                              :isDesignedBy :Ramy_Badie ;
+                                              :isExpansionOf :Unstable_Unicorns ;
+                                              :isPublishedBy :Breaking_Games ;
+                                              :complexity 2.00 ;
+                                              :maxCount 8 ;
+                                              :maxPlayingTime 60 ;
+                                              :minCount 2 ;
+                                              :minPlayingTime 30 ;
+                                              :rating 7.4 ;
+                                              :releaseYear 2021 ;
+                                              :suggestedAge 14 ;
+                                              rdfs:label "Unstable Unicorns: Nightmares Expansion Pack"@en .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
