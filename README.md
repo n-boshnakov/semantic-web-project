@@ -4,4 +4,14 @@ A concept normalization system that maps free-text mentions in board game docume
 
 ## Running the Project
 
+Installing the [ollama model](https://ollama.com/) is required.
+
+Run 
+
+```sh
+pip install -r requirements.txt
+```
+
+before starting the project.
+
 Open the Jupyter notebook in your editor of choice and run the cells one after the other.
